@@ -2,6 +2,7 @@ package org.example;
 import model.*;
 import model.Estado;
 
+import java.util.ArrayList;
 import java.util.Scanner;
 
 //TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or
@@ -10,7 +11,10 @@ public class Main {
     public static void main(String[] args) {
         Estado amazonas = new Estado();
         Cidade manaus = new Cidade();
-        Pessoa pessoa = new Pessoa();
+
+
+        ArrayList<Pessoa> pessoas = new ArrayList<Pessoa>();
+
 
         amazonas.setNome("Amazonas");
         amazonas.setSigla("Am");
@@ -18,26 +22,46 @@ public class Main {
         manaus.setNome("Manaus");
         manaus.setEstado(amazonas);
 
-        pessoa.setNome("Joao");
-        pessoa.setEmail("joao@gmail.com");
-        pessoa.setFone("234234-234");
-        pessoa.setCidade(manaus);
+        Pessoa pessoa1 = new Pessoa();
+        pessoa1.setNome("Joao");
+        pessoa1.setEmail("joao@gmail.com");
+        pessoa1.setFone("234234-234");
+        pessoa1.setCidade(manaus);
 
-        System.out.println("---Estado---");
-        System.out.println("Nome: " + amazonas.getNome());
-        System.out.println("Sigla: " + amazonas.getSigla());
+        Pessoa pessoa2 = new Pessoa();
+        pessoa2.setNome("Pedro");
+        pessoa2.setEmail("Pedro@gmail.com");
+        pessoa2.setFone("234234-001");
+        pessoa2.setCidade(manaus);
 
-        System.out.println("---Cidade---");
-        System.out.println("Nome: " + manaus.getNome());
-        System.out.println("Estado: " + manaus.getEstado().getNome());
+        Pessoa pessoa3 = new Pessoa();
+        pessoa3.setNome("Maria");
+        pessoa3.setEmail("Maria@gmail.com");
+        pessoa3.setFone("234234-002");
+        pessoa3.setCidade(manaus);
 
-        System.out.println("---Pessoa---");
-        System.out.println("Nome: " + pessoa.getNome());
-        System.out.println("Email: " + pessoa.getEmail());
-        System.out.println("Fone: " + pessoa.getFone());
+        pessoas.add(pessoa1);
+        pessoas.add(pessoa2);
+        pessoas.add(pessoa3);
 
-        System.out.println("Cidade: " + pessoa.getCidade().getNome());
-        System.out.println("Estado: " + pessoa.getCidade().getEstado().getNome());
+        for(Pessoa p : pessoas){
+            System.out.println("---Pessoa---");
+            System.out.println("Nome: " + p.getNome());
+            System.out.println("Email: " + p.getEmail());
+            System.out.println("Fone: " + p.getFone());
+
+            System.out.println("Cidade: " + p.getCidade().getNome());
+            System.out.println("Estado: " + p.getCidade().getEstado().getNome());
+        }
+
+
+//        System.out.println("---Estado---");
+//        System.out.println("Nome: " + amazonas.getNome());
+//        System.out.println("Sigla: " + amazonas.getSigla());
+//
+//        System.out.println("---Cidade---");
+//        System.out.println("Nome: " + manaus.getNome());
+//        System.out.println("Estado: " + manaus.getEstado().getNome());
 
 
     }
