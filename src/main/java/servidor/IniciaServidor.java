@@ -4,7 +4,7 @@ package servidor;
 import org.apache.catalina.Context;
 import org.apache.catalina.LifecycleException;
 import org.apache.catalina.startup.Tomcat;
-import servlet.OlaIfamServlet;
+import servlet.PessoaServlet;
 
 import java.io.File;
 
@@ -12,16 +12,18 @@ public class IniciaServidor {
     public static void main(String[] args) throws LifecycleException {
         Tomcat tomcat = new Tomcat();
 
+
+
         tomcat.setPort(8080);
         tomcat.getConnector();
 
         String webapp = new File("src/main/webapp").getAbsolutePath();
         Context context = tomcat.addWebapp("",webapp);
 
-        String nomeServlet = "OlaIfamServlet";
+        String nomeServlet = "PessoaServlet";
 
-        Tomcat.addServlet(context,nomeServlet,new OlaIfamServlet());
-        context.addServletMappingDecoded("/olaifam",nomeServlet);
+        Tomcat.addServlet(context,nomeServlet,new PessoaServlet());
+        context.addServletMappingDecoded("/pessoa",nomeServlet);
         System.out.println("Servidor Tomcat rodando...");
 
         tomcat.start();
